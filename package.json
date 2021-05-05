@@ -1,0 +1,49 @@
+{
+  "name": "bolierplate-grpc",
+  "version": "1.0.0",
+  "description": "Boilerplate for server/client grpc",
+  "main": "dist-sdk/index.js",
+  "typings": "dist-sdk/index.d.ts",
+  "scripts": {
+    "story": "npm run build-sdk && ts-node todo-story.ts",
+    "start": "npm run build-server && npm run serve",
+    "build-server": "rimraf dist && npm run build-server-ts && npm run copy-server",
+    "build-sdk": "rimraf dist-sdk && npm run build-sdk-ts && npm run copy-sdk",
+    "serve": "node dist/server.js",
+    "build-server-ts": "tsc --p tsconfig.json",
+    "build-sdk-ts": "tsc --p tsconfig-sdk.json",
+    "copy-server": "ts-node copy-server.ts",
+    "copy-sdk": "ts-node copy-sdk.ts",
+    "watch-ts": "tsc -w",
+    "prepublishOnly": "npm test && npm run build-sdk"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "dist-sdk/**/*"
+  ],
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "dotenv": "^8.2.0",
+    "grpc": "^1.24.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/eslint": "^6.8.0",
+    "@types/google-protobuf": "^3.7.2",
+    "@types/node": "^13.13.4",
+    "@types/shelljs": "^0.8.7",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "grpc_tools_node_protoc_ts": "^3.0.0",
+    "grpc-tools": "^1.8.1",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.4",
+    "ts-node": "^8.9.1",
+    "typedoc": "^0.17.6",
+    "typescript": "^3.8.3"
+  }
+}

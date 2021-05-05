@@ -1,0 +1,43 @@
+syntax = "proto3";
+package todo.v1;
+
+service Todo {
+  rpc CreateTodo (CreateTodoRequest) returns (TodoObject);
+  rpc GetTodo (IdRequest) returns (TodoObject);
+  rpc ListTodo (Void) returns (ListTodoResponse);
+  rpc UpdateTodo (TodoUpdateRequest) returns (Void);
+  rpc DeleteTodo (IdRequest) returns (Void);
+}
+
+enum State {
+  UNCHECKED = 0;
+  CHECKED = 1;
+  STRIKE = 2;
+}
+
+message CreateTodoRequest {
+  State state = 1;
+  string text = 2;
+}
+
+message IdRequest {
+  string id = 1;
+}
+
+message TodoObject {
+    string id = 1;
+    string text = 2;
+    State state = 3;
+}
+
+message TodoUpdateRequest {
+  string id = 1;
+  State state = 2;
+}
+
+message ListTodoResponse {
+  repeated TodoObject todos = 1;
+  string total = 2;
+}
+
+message Void {}
