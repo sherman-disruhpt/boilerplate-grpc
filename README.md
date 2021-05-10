@@ -2,7 +2,7 @@
 This repo is to demonstrate how to quickly setup a gRPC server and create a client for direct communication. 
 
 ## Generate from proto
-This needs to be done in order for any of the below commands to work. It generates code based off the proto file.
+This needs to be done in order for any of the below commands to work. It generates code based off the proto file(s).
 ```
 ./protoc.sh
 ```
